@@ -14,11 +14,15 @@ export default function Fetched() {
     const newanim = await animres.json();
 
     const animName = newanim.data.titles[0].title;
+    const animtype = newanim.data.type;
+    const animepi = newanim.data.episodes;
+    const animStatus = newanim.data.status;
     const charName = newdata.data[0].character.name;
     const charimg = newdata.data[0].character.images.jpg.image_url;
+    const actorName = newdata.data[0].voice_actors[1].person.name;
     const divElem = document.querySelector("#anime-container");
 
-    divElem.innerHTML = `<div><p>Character Name : ${charName}</p><br><p>Anime/Movie : ${animName}</p></div><div><img src = "${charimg}"><div>`;
+    divElem.innerHTML = `<div><p>Character Name : ${charName}</p><br><p>Voice Actor : ${actorName}</p><br><p>Anime : ${animName}</p><br><p>Type : ${animtype}</p><br><p>Episodes : ${animepi}</p><br><p>Status : ${animStatus}</p></div><div><img src = "${charimg}"><div>`;
   }
 
   return (
@@ -46,7 +50,7 @@ export default function Fetched() {
         </div>
         <div
           id="anime-container"
-          className="text-white flex flex-row gap-8 text-3xl"
+          className=" text-white flex flex-row gap-8 text-3xl font-mono"
         ></div>
       </main>
     </div>
