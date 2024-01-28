@@ -4,7 +4,7 @@ export default function Navbar(){
         <div>
             <nav className=" bg-purple-600 flex flex-row justify-between items-center h-20 p-4  text-2xl">
                 <div className="nav-header">
-                    <Link href = "http://localhost:3000/" target="_blank">
+                    <Link href = "http://localhost:3000/">
                         Project
                     </Link>
                 </div>
