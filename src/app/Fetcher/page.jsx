@@ -14,16 +14,16 @@ export default function Fetched() {
     const newanim = await animres.json();
 
     const animName = newanim.data.titles[0].title;
+    const animimg = newanim.data.images.jpg.image_url;
     const animtype = newanim.data.type;
     const animepi = newanim.data.episodes;
     const animStatus = newanim.data.status;
     const charName = newdata.data[0].character.name;
     const charimg = newdata.data[0].character.images.jpg.image_url;
-    const charimg2 = newdata.data[2].character.images.jpg.image_url;
-    const actorName = newdata.data[0].voice_actors[1].person.name;
+    const actorName = newdata.data[0].voice_actors[0].person.name;
     const divElem = document.querySelector("#anime-container");
 
-    divElem.innerHTML = `<div><p>Character Name : ${charName}</p><br><p>Voice Actor : ${actorName}</p><br><p>Anime : ${animName}</p><br><p>Type : ${animtype}</p><br><p>Episodes : ${animepi}</p><br><p>Status : ${animStatus}</p></div><div style="display: flex; flex-direction: row;"><div><img src = ${charimg} style="margin-right: 30px;"></div><div><img src = ${charimg2}></div></div>`;
+    divElem.innerHTML = `<div><p>Character Name : ${charName}</p><br><p>Voice Actor : ${actorName}</p><br><p>Anime : ${animName}</p><br><p>Type : ${animtype}</p><br><p>Episodes : ${animepi}</p><br><p>Status : ${animStatus}</p></div><div style="display: flex; flex-direction: row;"><div><img src = ${charimg} style="margin-right: 30px;"></div><div><img src = ${animimg}></div></div>`;
   }
 
   return (
