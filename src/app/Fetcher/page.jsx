@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/Navbar";
 import { useState } from "react";
 
 export default function Fetched() {
@@ -19,18 +19,19 @@ export default function Fetched() {
     const animStatus = newanim.data.status;
     const charName = newdata.data[0].character.name;
     const charimg = newdata.data[0].character.images.jpg.image_url;
+    const charimg2 = newdata.data[2].character.images.jpg.image_url;
     const actorName = newdata.data[0].voice_actors[1].person.name;
     const divElem = document.querySelector("#anime-container");
 
-    divElem.innerHTML = `<div><p>Character Name : ${charName}</p><br><p>Voice Actor : ${actorName}</p><br><p>Anime : ${animName}</p><br><p>Type : ${animtype}</p><br><p>Episodes : ${animepi}</p><br><p>Status : ${animStatus}</p></div><div><img src = "${charimg}"><div>`;
+    divElem.innerHTML = `<div><p>Character Name : ${charName}</p><br><p>Voice Actor : ${actorName}</p><br><p>Anime : ${animName}</p><br><p>Type : ${animtype}</p><br><p>Episodes : ${animepi}</p><br><p>Status : ${animStatus}</p></div><div style="display: flex; flex-direction: row;"><div><img src = ${charimg} style="margin-right: 30px;"></div><div><img src = ${charimg2}></div></div>`;
   }
 
   return (
     <div>
       <Navbar />
 
-      <main className="flex flex-col items-center mt-14 gap-14">
-        <div className=" text-purple-400 font-mono text-3xl">
+      <main className="flex flex-col items-center mt-14 ml-5 gap-14 ">
+        <div className=" text-purple-400 font-mono text-xl md:text-2xl lg:text-3xl ml-5">
           Search your Anime character based on a id provided from MyAnimelist or
           explore by inputting random Ids.
         </div>
@@ -39,18 +40,18 @@ export default function Fetched() {
             type="text"
             value={input}
             onChange={(e) => inputchanger(e.target.value)}
-            className=" w-96 h-10 p-2 rounded"
+            className=" w-50 h-10 p-2 rounded md:w-64 lg:w-96"
           ></input>
           <button
             onClick={Fetcher}
-            className="text-white bg-violet-500 hover:bg-violet-600 p-2 w-50 rounded"
+            className="text-white bg-violet-500 hover:bg-violet-600 p-2 w-50  rounded"
           >
             Click Me
           </button>
         </div>
         <div
           id="anime-container"
-          className=" text-white flex flex-row gap-8 text-3xl font-mono"
+          className=" text-white flex flex-row gap-8 text-base md:text-2xl lg:text-3xl font-mono p-5"
         ></div>
       </main>
     </div>
