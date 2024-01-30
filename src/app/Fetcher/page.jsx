@@ -5,7 +5,15 @@ import { useState } from "react";
 export default function Fetched() {
   const [input, inputchanger] = useState("");
 
+  const handler = (f) => {
+    const ENTER = 13;
+
+    if (f.keyCode === ENTER)
+        Fetcher()
+  };
+
   async function Fetcher() {
+    
     const animres = await fetch(`https://api.jikan.moe/v4/anime/${input}/full`);
     const res = await fetch(
       `https://api.jikan.moe/v4/anime/${input}/characters`
@@ -40,7 +48,9 @@ export default function Fetched() {
             type="text"
             value={input}
             onChange={(e) => inputchanger(e.target.value)}
+            onKeyUp= {(f) => handler(f)}
             className=" w-50 h-10 p-2 rounded md:w-64 lg:w-96"
+            id = "js-input"
           ></input>
           <button
             onClick={Fetcher}
